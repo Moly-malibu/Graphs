@@ -30,7 +30,7 @@ class Graph:
         Get all neighbors (edges) of a vertex.
         """
         return self.vertices[vertex_id]  
-
+#QUEUE
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
@@ -46,7 +46,7 @@ class Graph:
                 visited.add(v)   #visited
                 for next_vert in self.get_neighbors(v):
                     q.enqueue(next_vert)
-
+#STACK
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
@@ -62,7 +62,7 @@ class Graph:
                 visited.add(v)   #Mark visited
                 for next_vert in self.get_neighbors(v):
                     s.push(next_vert)
-
+#VISITED
     def dft_recursive(self, starting_vertex, visited=None):
         """
         Print each vertex in depth-first order
@@ -76,7 +76,7 @@ class Graph:
         for next_vert in self.get_neighbors(starting_vertex):
             if next_vert not in visited:
                 self.dft_recursive(next_vert, visited)
-
+#QUEUE
     def bfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing the shortest path from
@@ -98,7 +98,7 @@ class Graph:
                 q.enqueue(new_path)
         return None
 
-
+#STACK
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
@@ -119,7 +119,7 @@ class Graph:
                     new_path.append(next_vert)
                     s.push(new_path)
         return None  
-
+#VISITED
     def dfs_recursive(self, starting_vertex, destination_vertex, visited=None, path=None):
         """
         Return a list containing a path from
