@@ -6,7 +6,7 @@ class User:
 
 class SocialGraph:
     def __init__(self):
-        self.last_id = 0
+        self.last_id = 0    
         self.users = {}
         self.friendships = {}
 
@@ -44,19 +44,19 @@ class SocialGraph:
         self.last_id = 0
         self.users = {}
         self.friendships = {}
-        # !!!! IMPLEMENT ME
 
-        # Add users
+# !!!! IMPLEMENT ME
+# Add users
         for i in range(0, num_users):
             self.add_user(f'User{i}')
-        possible_friendships = []                                       #creae friendship, and all possible combinations.
+        new_friendships = []                                       #creae friendship, and all possible combinations.
         for user_id in self.users:                                      #Avoid duplicates by ensuring 
             for friend_id in range(user_id + 1, self.last_id + 1):
-                possible_friendships.append((user_id, friend_id))
-        random.shuffle(possible_friendships)                            #Random the possible friendships.
-        N = num_users * avg_friendships//2
-        for i in range(N):
-            friendship = possible_friendships[i]
+                new_friendships.append((friend_id, user_id))
+        random.shuffle(new_friendships)                            #Random the new possible friendships.
+        averag = num_users * avg_friendships//2
+        for i in range(averag):
+            friendship = new_friendships[i]
             user_id = friendship[0]
             friend_id = friendship[1]
             self.add_friendship(user_id, friend_id)
@@ -70,27 +70,27 @@ class SocialGraph:
 
         The key is the friend's ID and the value is the path.
         """
-        visited = {}                                                   # Note that this is a dictionary, not a set
-        results = {}                                                   # !!!! IMPLEMENT ME
-        for person_id in self.users:
-            visited[person_id] = []
+        visited = {}                                                   #dictionary
+        results = {}                                                   
+        for contact_id in self.users:
+            visited[contact_id] = []
             queue = []
-            queue.append([person_id])
-            results_len = len(results)
+            queue.append([contact_id])
+            network_len = len(results)
             while len(queue) > 0:
                 path = queue.pop(0)
-                sub_person_id = path[-1]
-                if sub_person_id not in visited[person_id]:
-                    visited[person_id].append(sub_person_id)
-                if sub_person_id == user_id:
+                y_contact_id = path[-1]
+                if y_contact_id not in visited[contact_id]:
+                    visited[contact_id].append(y_contact_id)
+                if y_contact_id == user_id:
                     path.reverse()
-                    results[person_id] = path                           # connection found
+                    results[contact_id] = path                           # connection found
                     break                                               # connecting to the next person
-                for friend_id in self.friendships[sub_person_id]:
+                for friend_id in self.friendships[y_contact_id]:
                     path_copy = path.copy()
                     path_copy.append(friend_id)
                     queue.append(path_copy)
-        if len(results) == results_len:                                 # if not added then no was found
+        if len(results) == network_len:                                 # if not added then no was found
             print("No Connection found: " + str(person_id))
 
         return visited
