@@ -63,7 +63,7 @@ class Graph:
                 visited.add(visited_node)   #Mark visited
                 for next_vertex in self.get_neighbors(visited_node):
                     up_stack.push(next_vertex)
-        print(up_stack)
+        print(next_vertex)
 #VISITED
     def dft_recursive(self, starting_vertex, visited=None):
         """
