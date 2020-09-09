@@ -136,3 +136,21 @@ bft(b)
 
 
 
+def get_neighbors(word:str):
+    start= 0
+    check = 0
+    neighbor = []
+    while start < len(word):
+        if check == 25:
+            check= 0
+            start +=1
+        if start > len(word) - 1:
+            break
+        x = list(word)
+        x[start] = letters[check]
+        y = ''.join(x)
+        if y in word_set and y != word :
+            neighbor.append(y)
+        check += 1
+        continue
+    return neighbor
