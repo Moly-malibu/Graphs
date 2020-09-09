@@ -1,14 +1,17 @@
 
 """
 Graph, 
-add vertice/nodes to graph
-add edges to graph, child, parent direction
+relationships between parents and children: 
+            edd vertice/nodes to graph
+            add edges to graph, child, parent direction
 
-queue
-add path from starting node to queue
+Data set and Id return earlier ancestor
+            queu add path from starting node to queue
 
-set
-queue not empty, dequeue 1st path
+directions:
+a parent may have any number of children          
+queue not empty, 
+dequeue 1st path
 last vertex from path """
 
 def earliest_ancestor(ancestors, starting_node, parent=None):
