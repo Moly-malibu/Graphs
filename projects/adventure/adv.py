@@ -29,9 +29,9 @@ player = Player(world.starting_room)
 traversal_path = []
 visited = set()
 move_back = {'n': 's', 
-           's': 'n', 
-           'w': 'e', 
-           'e':'w'}
+             's': 'n', 
+             'w': 'e', 
+             'e':'w'}
 
 def traverse(room, visited=None):
     path = []
